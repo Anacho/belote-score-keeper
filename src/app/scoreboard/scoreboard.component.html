@@ -1,0 +1,10 @@
+<mat-card>
+  <ng-container *ngFor="let match of matches">
+    <mat-expansion-panel [disabled]="!match.winner" expanded>
+      <mat-expansion-panel-header>
+        {{match.winner ? 'Gagnants : ' + match.winner.teamName : 'En cours…' }}
+      </mat-expansion-panel-header>
+      Tableau de résultat
+    </mat-expansion-panel>
+  </ng-container>
+</mat-card>

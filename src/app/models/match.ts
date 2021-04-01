@@ -1,6 +1,6 @@
 import { Team } from './team';
 import { Round } from './round';
-import { Color } from './color';
+import { Color } from './color.enum';
 import { GameState } from './game-state.enum';
 
 class Player {

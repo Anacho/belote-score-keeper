@@ -1,0 +1,10 @@
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+}
+.main-container > * {
+  flex: 1;
+  margin: 0 0.5rem;
+}

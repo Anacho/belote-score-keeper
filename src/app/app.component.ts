@@ -8,10 +8,11 @@ import { Match } from './models/match';
 })
 export class AppComponent implements OnInit {
   title = 'Belote';
-  public matches: any[] = [];
+  public matches: Match[] = [];
 
   public ngOnInit() {
     // Ask for players names and teams
+    this.startMatch();
   }
 
   public startMatch() {
