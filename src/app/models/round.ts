@@ -1,8 +1,8 @@
-import { GameState } from './gameState';
+import { GameState } from './game-state.enum';
 import { Team } from './team';
-import { Color } from './color';
+import { Color } from './color.enum';
 import { Player } from './player';
-import { RoundState } from './roundState';
+import { RoundState } from './round-state.enum';
 
 export class Round {
 

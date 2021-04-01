@@ -1,11 +1,11 @@
 import { Round } from './round';
-import { GameState } from './gameState';
-import { RoundState } from './roundState';
+import { GameState } from './game-state.enum';
+import { RoundState } from './round-state.enum';
 import { Team } from './team';
-import { Color } from './color';
+import { Color } from './color.enum';
 
 describe('Round class', () => {
-  const takerTeam = new Team([{ name: 'Kiou' }, {name : 'MH' }], 'Nous');
+  const takerTeam = new Team([{ name: 'Kiou' }, { name: 'MH' }], 'Nous');
   const defendingTeam = new Team([{ name: 'Carmen' }, { name: 'André' }], 'Eux');
 
   it('should effectively skip the round when given state TWICE', () => {
@@ -15,18 +15,18 @@ describe('Round class', () => {
   });
 
   it('should initialize a new Round with a Taker and trump Spade', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     expect(round.gameState).toBeUndefined();
     expect(round.roundState).toEqual(RoundState.IN_PROGRESS);
     expect(round.takerTeam).toBe(takerTeam);
     expect(round.defendingTeam).toBe(defendingTeam);
     expect(round.taker).toEqual({ name: 'Kiou' });
-    expect(round.trump).toEqual(Color.PIQUE);
+    expect(round.trump).toEqual(Color.SPADE);
   });
 
   it('should play a full round with a result of WIN for taker team', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBonus(takerTeam, 50);
     round.setBelote(defendingTeam);
@@ -39,7 +39,7 @@ describe('Round class', () => {
   });
 
   it('should play a full round with a result of DEDANS', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBelote(defendingTeam);
     round.setScore(takerTeam, 84);
@@ -51,7 +51,7 @@ describe('Round class', () => {
   });
 
   it('should play a full round with a result of DEDANS (bonus steal)', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBonus(takerTeam, 50);
     round.setScore(takerTeam, 54);
@@ -63,7 +63,7 @@ describe('Round class', () => {
   });
 
   it('should play a full round with a result of DEDANS (belote keep)', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBelote(takerTeam);
     round.setScore(defendingTeam, 96);
@@ -75,7 +75,7 @@ describe('Round class', () => {
   });
 
   it('should play a full round with a result of LITIGE (taker belote)', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBelote(takerTeam);
     round.setScore(takerTeam, 71);
@@ -87,7 +87,7 @@ describe('Round class', () => {
   });
 
   it('should play a full round with a result of LITIGE (def belote)', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBelote(defendingTeam);
     round.setScore(takerTeam, 91);
@@ -99,7 +99,7 @@ describe('Round class', () => {
   });
 
   it('should play a full round with a result of CAPOT', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBonus(takerTeam, 20);
     round.setBelote(defendingTeam);
@@ -112,7 +112,7 @@ describe('Round class', () => {
   });
 
   it('should play a full round with a result of CAPOT-DEDANS', () => {
-    const round = new Round({ taker: {name: 'Kiou' }, takerTeam, trump: Color.PIQUE });
+    const round = new Round({ taker: { name: 'Kiou' }, takerTeam, trump: Color.SPADE });
     round.setDefendingTeam(defendingTeam);
     round.setBonus(takerTeam, 100);
     round.setBelote(takerTeam);

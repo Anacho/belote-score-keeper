@@ -1,12 +1,12 @@
-import { Player } from "./player";
+import { Player } from './player';
 
 export class Team {
-    public names: Player[];
-    public teamName: string;
+  public names: Player[];
+  public teamName: string;
 
-    constructor(names: Player[], teamName: string) {
-        this.names = names;
-        this.teamName = teamName;
-    }
+  constructor(names: Player[], teamName: string) {
+    this.names = names;
+    this.teamName = teamName;
+  }
 
 }

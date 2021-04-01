@@ -1,7 +1,7 @@
 import { Team } from './team';
 import { Round } from './round';
 import { Color } from './color';
-import { GameState } from './gameState';
+import { GameState } from './game-state.enum';
 
 class Player {
   name: string;
@@ -17,16 +17,17 @@ export class Match {
   winner: Team | null = null;
   scores: Map<string, number> = new Map<string, number>();
 
-  public constructor() { }
+  public constructor() {
+  }
 
-  public setTeam(names: string[], teamName: string) {
+  public setTeam(names: Player[], teamName: string) {
     this.teams.set(teamName, new Team(names, teamName));
     this.scores.set(teamName, 0);
   }
 
   public startRound(taker: Player, trump: Color) {
     const takerTeam = this.findTeamByPlayer(taker.name);
-    const round = new Round({taker, takerTeam, trump});
+    const round = new Round({ taker, takerTeam, trump });
     round.setDefendingTeam(this.getOpponentTeam(takerTeam));
     this.rounds.push(round);
   }
@@ -35,10 +36,11 @@ export class Match {
    * Round de "deux"
    */
   public skipRound() {
-    this.rounds.push(new Round({gameState: GameState.TWICE}));
+    this.rounds.push(new Round({ gameState: GameState.TWICE }));
   }
 
-  public endRound() {}
+  public endRound() {
+  }
 
   private findTeamByPlayer(playerName): Team {
     let playerTeam = null;
